@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akasha Store</title>
+<style>
+/* ---------- Reset ---------- */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* ---------- Body ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* ---------- Header ---------- */
+header {
+  background-color: #ff7a00;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+}
+header img {
+  width: 140px;
+  margin-bottom: 10px;
+}
+header h1 { margin-bottom: 5px; }
+header p { font-size: 14px; }
+
+/* ---------- Navigation / Social ---------- */
+.social a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ---------- Products ---------- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 10px;
+}
+.product {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  background:#fff;
+  transition: transform 0.2s;
+}
+.product:hover { transform: scale(1.05); }
+.product img { width: 100%; height: 150px; object-fit: cover; }
+.product h3 { color: #ff7a00; margin: 10px 0; }
+.product p { font-size: 14px; margin: 5px 0; }
+.product button {
+  background-color: #ff7a00;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 80%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.product button:hover { background-color: #e56e00; }
+
+/* ---------- Cart ---------- */
+#cart {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 15px;
+  border: 2px solid #ff7a00;
+  border-radius: 8px;
+}
+#cart h2 { color: #ff7a00; margin-bottom: 10px; }
+#cart ul { list-style:none; margin-bottom: 10px; }
+#cart li { margin-bottom: 5px; }
+
+/* ---------- Register Form ---------- */
+form {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border:1px solid #ccc;
+}
+form button {
+  background-color: #ff7a00;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 6px;
+  cursor:pointer;
+}
+form button:hover { background-color: #e56e00; }
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #ff7a00;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="images/logo.jpg" alt="Akasha Store Logo">
+  <h1>Akasha Store</h1>
+  <p>متجرك للخدمات الرقمية – مواقع، متاجر إلكترونية وأكثر</p>
+  <div class="social">
+    <a href="https://www.instagram.com/akasha_astur" target="_blank">📸 Instagram</a>
+    <a href="https://wa.me/96875010052" target="_blank">💬 WhatsApp</a>
+  </div>
+</header>
+
+<section class="products">
+  <div class="product">
+    <img src="images/logo.jpg" alt="منتج 1">
+    <h3>منتج 1</h3>
+    <p>سعر: 10$</p>
+    <button onclick="addToCart('منتج 1',10)">أضف إلى السلة</button>
+  </div>
+  <div class="product">
+    <img src="images/logo.jpg" alt="منتج 2">
+    <h3>منتج 2</h3>
+    <p>سعر: 20$</p>
+    <button onclick="addToCart('منتج 2',20)">أضف إلى السلة</button>
+  </div>
+  <div class="product">
+    <img src="images/logo.jpg" alt="منتج 3">
+    <h3>منتج 3</h3>
+    <p>سعر: 15$</p>
+    <button onclick="addToCart('منتج 3',15)">أضف إلى السلة</button>
+  </div>
+  <div class="product">
+    <img src="images/logo.jpg" alt="منتج 4">
+    <h3>منتج 4</h3>
+    <p>سعر: 25$</p>
+    <button onclick="addToCart('منتج 4',25)">أضف إلى السلة</button>
+  </div>
+</section>
+
+<section id="cart">
+  <h2>سلة التسوق</h2>
+  <ul id="cart-items"></ul>
+  <p id="total">المجموع: 0$</p>
+</section>
+
+<section>
+  <h2 style="text-align:center; color:#ff7a00;">إنشاء حساب جديد</h2>
+  <form>
+    <input type="text" placeholder="الاسم الكامل" required>
+    <input type="email" placeholder="البريد الإلكتروني" required>
+    <input type="password" placeholder="كلمة المرور" required>
+    <input type="password" placeholder="تأكيد كلمة المرور" required>
+    <button type="submit">إنشاء حساب</button>
+  </form>
+  <p style="font-size:14px;color:#777;text-align:center;">
+    * إنشاء الحساب هنا واجهة فقط، سيتم ربطه بنظام كامل لاحقاً.
+  </p>
+</section>
+
+<footer>
+  © 2026 Akasha Store – جميع الحقوق محفوظة
+</footer>
+
+<script>
+// ---------- JavaScript لعربة التسوق ----------
+let cart = [];
+function addToCart(name, price){
+  cart.push({name:name, price:price});
+  updateCart();
+}
+function updateCart(){
+  let cartItems = document.getElementById('cart-items');
+  let totalEl = document.getElementById('total');
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach(item=>{
+    let li = document.createElement('li');
+    li.textContent = `${item.name} - ${item.price}$`;
+    cartItems.appendChild(li);
+    total += item.price;
+  });
+  totalEl.textContent = `المجموع: ${total}$`;
+}
+</script>
+
+</body>
+</html>
